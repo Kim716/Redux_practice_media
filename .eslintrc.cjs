@@ -12,6 +12,9 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh', 'prettier'],
   rules: {
+    'react/prop-types': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
     'react-refresh/only-export-components': 'warn',
   },
 };
