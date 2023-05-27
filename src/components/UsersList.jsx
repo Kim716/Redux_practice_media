@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from '../store';
+import Skeleton from './Skeleton';
 
 function UsersList() {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ function UsersList() {
   }, [dispatch]); // 只有在第一次載入元件會執行，所以 dependencies 為空就好，但 eslint..
 
   if (isLoading) {
-    return <div>is loading...</div>;
+    return <Skeleton times={6} className="h-10 w-full" />;
   }
 
   if (error) {
