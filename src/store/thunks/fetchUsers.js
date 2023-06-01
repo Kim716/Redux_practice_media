@@ -5,7 +5,7 @@ const fetchUsers = createAsyncThunk('users/fetch', async () => {
   const res = await axios.get('http://localhost:3005/users');
 
   // !!! FOR DEV !!!
-  await pause(10000); // 等兩秒
+  await pause(1000); // 等兩秒
 
   return res.data; //db 中的 users data 用在 reducers 會是 action.payload
 });
