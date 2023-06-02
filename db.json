@@ -1,10 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Myra"
-    },
-    {
       "id": 2,
       "name": "Kim"
     },
@@ -13,18 +9,8 @@
       "id": 3
     },
     {
-      "name": "Kim",
-      "id": 4
-    },
-    {
-      "name": "Kim",
-      "id": 5
-    },
-    {
+      "name": "kim",
       "id": 6
-    },
-    {
-      "id": 7
     },
     {
       "name": "kim",
@@ -33,14 +19,6 @@
     {
       "name": "kim",
       "id": 9
-    },
-    {
-      "name": "kim",
-      "id": 10
-    },
-    {
-      "name": "kim",
-      "id": 11
     }
   ],
   "albums": [],
