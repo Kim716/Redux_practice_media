@@ -21,6 +21,12 @@
       "id": 9
     }
   ],
-  "albums": [],
+  "albums": [
+    {
+      "id": 10,
+      "title": "summer",
+      "userId": 2
+    }
+  ],
   "photos": []
 }
