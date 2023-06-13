@@ -22,7 +22,11 @@ export const albumsApi = createApi({
     return {
       fetchAlbums: builder.query({
         providesTags: (result, error, user) => {
-          return [{ type: 'Album', id: user.id }];
+          const tags = result.map((album) => {
+            return { type: 'Album', id: album.id };
+          });
+          tags.push({ type: 'UsersAlbums', id: user.id });
+          return tags;
         }, // 呼叫的 mutation 有標記這個 tag，就會觸發 fetchAlbums
         query: (user) => {
           return {
@@ -36,7 +40,7 @@ export const albumsApi = createApi({
       }),
       addAlbum: builder.mutation({
         invalidatesTags: (result, error, user) => {
-          return [{ type: 'Album', id: user.id }];
+          return [{ type: 'UsersAlbums', id: user.id }];
         }, // So now whenever we run this mutation, we're going to go and find all the queries that make use of this tag. Mark them as out of date. Those queries are going to be executed again
         query: (user) => {
           return {
@@ -49,8 +53,23 @@ export const albumsApi = createApi({
           };
         },
       }),
+      removeAlbum: builder.mutation({
+        invalidatesTags: (result, error, album) => {
+          return [{ type: 'Album', id: album.id }];
+        },
+        query: (album) => {
+          return {
+            url: `/albums/${album.id}`,
+            method: 'DELETE',
+          };
+        },
+      }),
     };
   },
 });
 
-export const { useFetchAlbumsQuery, useAddAlbumMutation } = albumsApi;
+export const {
+  useFetchAlbumsQuery,
+  useAddAlbumMutation,
+  useRemoveAlbumMutation,
+} = albumsApi;
